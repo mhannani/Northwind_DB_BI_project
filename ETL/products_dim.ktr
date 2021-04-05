@@ -548,179 +548,11 @@
   </connection>
   <order>
     <hop>
-      <from>Does the product_dim table exist ?</from>
-      <to>Switch / case</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Extraction depuis products</from>
       <to>products_dim</to>
       <enabled>Y</enabled>
     </hop>
-    <hop>
-      <from>Data grid</from>
-      <to>Does the product_dim table exist ?</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Switch / case</from>
-      <to>Execute SQL script</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Switch / case</from>
-      <to>Dummy (do nothing)</to>
-      <enabled>Y</enabled>
-    </hop>
   </order>
-  <step>
-    <name>Data grid</name>
-    <type>DataGrid</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>dim</name>
-        <type/>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-        <field_null_if/>
-      </field>
-    </fields>
-    <data>
-      <line>
-        <item>products_dim</item>
-      </line>
-    </data>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>48</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Does the product_dim table exist ?</name>
-    <type>TableExists</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>northwind_dw</connection>
-    <tablenamefield>dim</tablenamefield>
-    <resultfieldname>exist_or_not</resultfieldname>
-    <schemaname/>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>256</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Execute SQL script</name>
-    <type>ExecSQL</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>northwind_dw</connection>
-    <execute_each_row>N</execute_each_row>
-    <single_statement>N</single_statement>
-    <replace_variables>N</replace_variables>
-    <quoteString>N</quoteString>
-    <sql>CREATE TABLE products_dim
-(
-  product_tk BIGINT NOT NULL PRIMARY KEY
-, version INT
-, date_from DATETIME
-, date_to DATETIME
-, ProductID INT
-, ProductName VARCHAR(40)
-, UnitPrice DOUBLE
-, UnitsInStock INT
-, UnitsOnOrder INT
-, Discontinued BOOLEAN
-, CategoryName VARCHAR(15)
-)</sql>
-    <set_params>N</set_params>
-    <insert_field/>
-    <update_field/>
-    <delete_field/>
-    <read_field/>
-    <arguments>
-      <argument>
-        <name>ProductID</name>
-      </argument>
-      <argument>
-        <name>ProductName</name>
-      </argument>
-      <argument>
-        <name>CategoryName</name>
-      </argument>
-      <argument>
-        <name>UnitPrice</name>
-      </argument>
-      <argument>
-        <name>UnitsInStock</name>
-      </argument>
-      <argument>
-        <name>UnitsOnOrder</name>
-      </argument>
-      <argument>
-        <name>Discontinued</name>
-      </argument>
-      <argument>
-        <name>exist</name>
-      </argument>
-    </arguments>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>784</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Extraction depuis products</name>
     <type>TableInput</type>
@@ -913,49 +745,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Switch / case</name>
-    <type>SwitchCase</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fieldname>exist_or_not</fieldname>
-    <use_contains>N</use_contains>
-    <case_value_type>None</case_value_type>
-    <case_value_format/>
-    <case_value_decimal/>
-    <case_value_group/>
-    <default_target_step>Execute SQL script</default_target_step>
-    <cases>
-      <case>
-        <value>Y</value>
-        <target_step>Dummy (do nothing)</target_step>
-      </case>
-      <case>
-        <value>N</value>
-        <target_step>Execute SQL script</target_step>
-      </case>
-    </cases>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>464</xloc>
+      <xloc>224</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
@@ -996,6 +786,10 @@
       <key>
         <name/>
         <lookup>UnitsInStock</lookup>
+      </key>
+      <key>
+        <name>ProductID</name>
+        <lookup>ProductID</lookup>
       </key>
       <date>
         <name/>
@@ -1058,49 +852,12 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>784</xloc>
-      <yloc>16</yloc>
+      <xloc>544</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step_error_handling>
-    <error>
-      <source_step>Does the product_dim table exist ?</source_step>
-      <target_step>products_dim</target_step>
-      <is_enabled>N</is_enabled>
-      <nr_valuename/>
-      <descriptions_valuename/>
-      <fields_valuename/>
-      <codes_valuename/>
-      <max_errors/>
-      <max_pct_errors/>
-      <min_pct_rows/>
-    </error>
   </step_error_handling>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
