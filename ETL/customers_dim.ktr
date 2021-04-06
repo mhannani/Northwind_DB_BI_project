@@ -602,14 +602,11 @@
     <sql>CREATE TABLE customers_dim
 (
   customer_sk BIGINT NOT NULL PRIMARY KEY
-, version INT
-, date_from DATETIME
-, date_to DATETIME
-, CustomerID VARCHAR(5)
+, date DATETIME
 , Customer_id VARCHAR(5)
-, Company_Name VARCHAR(40)
-, Contact_Name VARCHAR(30)
-, Contact_Title VARCHAR(30)
+, Company_name VARCHAR(40)
+, Contact_name VARCHAR(30)
+, Contact_title VARCHAR(30)
 , Address VARCHAR(60)
 )</sql>
     <set_params>N</set_params>
@@ -678,8 +675,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>80</yloc>
+      <xloc>32</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -747,8 +744,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>320</yloc>
+      <xloc>640</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -795,7 +792,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
+      <xloc>496</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1185,7 +1182,7 @@ FROM customers
     </remotesteps>
     <GUI>
       <xloc>384</xloc>
-      <yloc>320</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1209,10 +1206,6 @@ FROM customers
       <key>
         <name>Customer_id</name>
         <lookup>CustomerID</lookup>
-      </key>
-      <key>
-        <name>Customer_id</name>
-        <lookup>Customer_id</lookup>
       </key>
       <date>
         <name/>
@@ -1244,7 +1237,7 @@ FROM customers
         <rename/>
         <creation_method>tablemax</creation_method>
         <use_autoinc>N</use_autoinc>
-        <version>version</version>
+        <version/>
       </return>
     </fields>
     <sequence/>
@@ -1266,7 +1259,7 @@ FROM customers
     </remotesteps>
     <GUI>
       <xloc>832</xloc>
-      <yloc>272</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
