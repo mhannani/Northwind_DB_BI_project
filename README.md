@@ -85,7 +85,7 @@ Design a data warehouse of Northwind database. And use business analysis to get 
       Number of dimension = 4
       Other keys = 2
       Number of rows in the sales_fact = 91 * 8 * 2.5 = 1820
-      Estimated Data size per row = (9 keys * 4 bytes ) + (1 nvchar * 50) + (2 datetime * 8) + 
+      Estimated Data size per row = (9 keys * 4 bytes ) + (1 nvarchar * 50) + (2 datetime * 8) + 
                                     (1 smallint * 2) + (1 money * 8) + (1 real * 4) = 116 bytes
     </p>
     <p style=" font-size:13.2pt;">
