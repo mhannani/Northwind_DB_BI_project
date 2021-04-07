@@ -67,3 +67,24 @@ Design a data warehouse of Northwind database. And use business analysis to get 
   
 + #### 1.3. dimensional for the data warehouse / data mart:
 !["dimensional_schema_northwind"](screenshots/start_schema.png)
++ #### 1.3. Estimate the size of the data mart / data warehouse:
+    <p>
+    The size of the data warehouse is estimated by calculating the storage requirements of the designed table schema and the number
+    of rows the database contains. The most important table to consider is the fact table as it requires the maximum amount of storage,
+    and the space requirements of the dimension tables could be neglected in the estimation .
+    </p>
+    <p>
+      Let us now estimate the size of the Sales_Fact table. The Sales_Fact table stores details of transactions by customers over a 
+      period of 2.5 years. Let us assume that a customer has an average of 8 transactions per year.
+    </p>
+    <p>
+  
+      Customers = 91
+      Average transaction per customer per year = 8
+      year of Data = 2.5 years 
+      Number of dimension = 4
+      Other keys = 2
+      Number of rows in the sales_fact = 91 * 8 * 2.5 = 1820
+      Estimated Data size per row = (9 keys * 4 bytes ) + (1 nvchar * 50) + (2 datetime * 8) + 
+                                    (1 smallint * 2) + (1 money * 8) + (1 real * 4) = 116 bytes
+    </p>
