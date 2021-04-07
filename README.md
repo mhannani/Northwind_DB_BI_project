@@ -68,16 +68,16 @@ Design a data warehouse of Northwind database. And use business analysis to get 
 + #### 1.3. dimensional for the data warehouse / data mart:
 !["dimensional_schema_northwind"](screenshots/start_schema.png)
 + #### 1.3. Estimate the size of the data mart / data warehouse:
-    <p>
+    <p style=" font-size:13.2pt;">
     The size of the data warehouse is estimated by calculating the storage requirements of the designed table schema and the number
     of rows the database contains. The most important table to consider is the fact table as it requires the maximum amount of storage,
     and the space requirements of the dimension tables could be neglected in the estimation .
     </p>
-    <p>
+    <p style=" font-size:13.2pt;">
       Let us now estimate the size of the Sales_Fact table. The Sales_Fact table stores details of transactions by customers over a 
       period of 2.5 years. Let us assume that a customer has an average of 8 transactions per year.
     </p>
-    <p>
+    <p style=" font-size:13.2pt;">
   
       Customers = 91
       Average transaction per customer per year = 8
@@ -88,3 +88,22 @@ Design a data warehouse of Northwind database. And use business analysis to get 
       Estimated Data size per row = (9 keys * 4 bytes ) + (1 nvchar * 50) + (2 datetime * 8) + 
                                     (1 smallint * 2) + (1 money * 8) + (1 real * 4) = 116 bytes
     </p>
+    <p style=" font-size:13.2pt;">
+      The sizes of the dimension tables can be estimated in a similar fashion. The actual
+      size of the final data warehouse is 9.25 MB. The actual sizes of the different tables in the
+      Northwind Data Warehouse
+    </p>
+    <p style=" font-size:13.2pt;">
+      The actual sizes of the different tables in the Northwind Data Warehouse are given in the table below:
+    </p>
+        <p>
+          | ------------------------ | ---------- | ---------------- | ---------------- | ---------------- |
+          |              Table       |    Rows    |  Data Size (MB)  |  Index Size (MB) | Total Size (MB)  |
+          | ------------------------ | ---------- | ---------------- | ---------------- | ---------------- |  
+          |       Customer_Dim       |     91     |      0.023       |       0.016      |       0.039      |
+          |       Product_Dim        |     77     |      0.016       |       0.016      |       0.032      |
+          |       Time_Dim           |     708    |      0.266       |       0.016      |       0.282      |
+          |       Location_Dim       |     124    |      0.008       |       0.008      |       0.016      | 
+          |       Sales_Fact         |     1963   |      0.195       |       0.016      |       0.211      | 
+          | ------------------------ | ---------- | ---------------- | ---------------- | ---------------- |
+  </p>
