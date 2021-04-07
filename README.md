@@ -97,6 +97,7 @@ Design a data warehouse of Northwind database. And use business analysis to get 
       The actual sizes of the different tables in the Northwind Data Warehouse are given in the table below:
     </p>
         <p>
+  
           | ------------------------ | ---------- | ---------------- | ---------------- | ---------------- |
           |              Table       |    Rows    |  Data Size (MB)  |  Index Size (MB) | Total Size (MB)  |
           | ------------------------ | ---------- | ---------------- | ---------------- | ---------------- |  
